@@ -1,0 +1,42 @@
+Dial Widget 1.0
+Author: Daniel Nemec
+Contact: djnemec@gmail.com
+
+Introduction:
+=============
+This widget displays a simple dial that can be clicked on and dragged to increase
+or decrease the value of the dial. It emits increase/decrease events at specified
+intervals as well as an event every time the dial moves.
+
+The image file provided when initializing the widget will rotate with the dial.
+
+The dial has a barrier between 0 and 360 degrees (calculated from the left
+horizontal upwards). Once the dial is rotated 360 degrees, it will not rotate any
+more and must be rotated back to zero the long way (this prevents instant jumps
+from zero to the ticker's maximum value)
+
+Dependencies:
+=============
+  Python GTK 2.0 (pygtk): (Obviously, this widget will only work on platforms with Gnome installed)
+  Python Imaging Library: Currently available at http://www.pythonware.com/products/pil/
+  Numerical Python Library (python-numpy): Available at http://numpy.scipy.org/
+  GIbject Module (python-gobject)
+
+Instructions:
+=============
+The dial is initialized with two optional arguments:
+  image_file - Defaults to dial.png, this is the image that is displayed
+  ticker_max - Defaults to 100 (for percentages), determines the maximum value
+    that the ticker will report as well as how often the "increase" and "decrease"
+    events are reported.
+
+Three events can be connected to:
+  dial_changed - This event is emitted every time the dial moves. It returns a
+    floating point value between 0 and ticker_max, calculated with the following
+    formula: angle_rotated*ticker_max/360. The angle is calculated from the left
+    horizontal upwards.
+  dial_increase - This event is emitted every time dial_changed, rounded to the
+    nearest integer, increases. It has no returned value.
+  dial_decrease - This event is emitted every time dial_changed, rounded to the
+    nearest integer, decreases. It has no returned value.
+
