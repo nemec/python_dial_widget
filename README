@@ -24,6 +24,8 @@ Dependencies:
 
 Instructions:
 =============
+The file Dial.py may be run on its own for testing.
+
 The dial is initialized with two optional arguments:
   image_file - Defaults to dial.png, this is the image that is displayed
   ticker_max - Defaults to 100 (for percentages), determines the maximum value
